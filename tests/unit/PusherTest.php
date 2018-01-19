@@ -55,7 +55,7 @@ class PusherTest extends TestCase
 
 		$pusher = new Pusher($response);
 
-		$pusher->push('foo.css', ['preload']);
+		$this->assertSame('foo.css', $pusher->push('foo.css', ['preload']));
 
 		$pusher->addHeaderToResponse();
 	}
@@ -71,9 +71,9 @@ class PusherTest extends TestCase
 
 		$pusher = new Pusher($response);
 
-		$pusher->push('foo.css', ['preload']);
+		$this->assertSame('foo.css', $pusher->push('foo.css', ['preload']));
 
-		$pusher->push('bar.css', ['preload']);
+		$this->assertSame('bar.css', $pusher->push('bar.css', ['preload']));
 
 		$pusher->addHeaderToResponse();
 	}
@@ -89,7 +89,7 @@ class PusherTest extends TestCase
 
 		$pusher = new Pusher($response);
 
-		$pusher->push('foo.css', ['preload', 'nopush' => true]);
+		$this->assertSame('foo.css', $pusher->push('foo.css', ['preload', 'nopush' => true]));
 
 		$pusher->addHeaderToResponse();
 	}
@@ -105,7 +105,7 @@ class PusherTest extends TestCase
 
 		$pusher = new Pusher($response);
 
-		$pusher->push('foo.css', ['preload', 'as' => 'style']);
+		$this->assertSame('foo.css', $pusher->push('foo.css', ['preload', 'as' => 'style']));
 
 		$pusher->addHeaderToResponse();
 	}
@@ -118,7 +118,7 @@ class PusherTest extends TestCase
 
 		$pusher = new Pusher($response);
 
-		$pusher->dnsPrefetch('https://example.org');
+		$this->assertSame('https://example.org', $pusher->dnsPrefetch('https://example.org'));
 
 		$pusher->addHeaderToResponse();
 	}
@@ -134,7 +134,7 @@ class PusherTest extends TestCase
 
 		$pusher = new Pusher($response);
 
-		$pusher->preconnect('https://example.org');
+		$this->assertSame('https://example.org', $pusher->preconnect('https://example.org'));
 
 		$pusher->addHeaderToResponse();
 	}
@@ -150,7 +150,7 @@ class PusherTest extends TestCase
 
 		$pusher = new Pusher($response);
 
-		$pusher->prefetch('https://example.org');
+		$this->assertSame('https://example.org', $pusher->prefetch('https://example.org'));
 
 		$pusher->addHeaderToResponse();
 	}
@@ -166,7 +166,7 @@ class PusherTest extends TestCase
 
 		$pusher = new Pusher($response);
 
-		$pusher->preload('foo.css');
+		$this->assertSame('foo.css', $pusher->preload('foo.css'));
 
 		$pusher->addHeaderToResponse();
 	}
@@ -182,7 +182,7 @@ class PusherTest extends TestCase
 
 		$pusher = new Pusher($response);
 
-		$pusher->preload('foo.css', ['as' => 'style']);
+		$this->assertSame('foo.css', $pusher->preload('foo.css', ['as' => 'style']));
 
 		$pusher->addHeaderToResponse();
 	}
@@ -198,7 +198,7 @@ class PusherTest extends TestCase
 
 		$pusher = new Pusher($response);
 
-		$pusher->prerender('foo.css');
+		$this->assertSame('foo.css', $pusher->prerender('foo.css'));
 
 		$pusher->addHeaderToResponse();
 	}
