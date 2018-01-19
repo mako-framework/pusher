@@ -52,5 +52,5 @@ You can pre-connect to a domain that you know your client will have to connect t
 
 ### More details
 
-[https://w3c.github.io/preload/](https://w3c.github.io/preload/)
-[https://w3c.github.io/resource-hints/](https://w3c.github.io/resource-hints/)
+* [https://w3c.github.io/preload/](https://w3c.github.io/preload/)
+* [https://w3c.github.io/resource-hints/](https://w3c.github.io/resource-hints/)
