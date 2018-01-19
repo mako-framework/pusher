@@ -97,6 +97,18 @@ class Pusher
 	}
 
 	/**
+	 * Adds a dns-prefetch item to list.
+	 *
+	 * @param  string $item    Item url or path
+	 * @param  array  $options Options
+	 * @return string
+	 */
+	public function dnsPrefetch(string $item, array $options = []): string
+	{
+		return $this->push($item, array_merge(['dns-prefetch'], $options));
+	}
+
+	/**
 	 * Adds a preconnect item to list.
 	 *
 	 * @param  string $item    Item url or path
@@ -130,5 +142,17 @@ class Pusher
 	public function preload(string $item, array $options = []): string
 	{
 		return $this->push($item, array_merge(['preload'], $options));
+	}
+
+	/**
+	 * Adds a prerender item to list.
+	 *
+	 * @param  string $item    Item url or path
+	 * @param  array  $options Options
+	 * @return string
+	 */
+	public function prerender(string $item, array $options = []): string
+	{
+		return $this->push($item, array_merge(['prerender'], $options));
 	}
 }

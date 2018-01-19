@@ -110,6 +110,19 @@ class PusherTest extends TestCase
 		$pusher->addHeaderToResponse();
 	}
 
+	public function testDnsPrefetchConvenience()
+	{
+		$response = Mockery::mock(Response::class);
+
+		$response->shouldReceive('header')->once()->with('Link', '<https://example.org>; rel=dns-prefetch');
+
+		$pusher = new Pusher($response);
+
+		$pusher->dnsPrefetch('https://example.org');
+
+		$pusher->addHeaderToResponse();
+	}
+
 	/**
 	 *
 	 */
@@ -170,6 +183,22 @@ class PusherTest extends TestCase
 		$pusher = new Pusher($response);
 
 		$pusher->preload('foo.css', ['as' => 'style']);
+
+		$pusher->addHeaderToResponse();
+	}
+
+	/**
+	 *
+	 */
+	public function testPrerenderConvenienceWithOptions()
+	{
+		$response = Mockery::mock(Response::class);
+
+		$response->shouldReceive('header')->once()->with('Link', '<foo.css>; rel=prerender');
+
+		$pusher = new Pusher($response);
+
+		$pusher->prerender('foo.css');
 
 		$pusher->addHeaderToResponse();
 	}
