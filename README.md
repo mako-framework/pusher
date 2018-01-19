@@ -1,6 +1,6 @@
 # Mako Pusher
 
-Pusher lets you use `HTTP2 server push` and `prefetching` in your applications.
+Pusher enables you to easily implement `preloading`, `prefetching`, `prerendering`, `dns-prefetching` and `preconnecting` in your applications.
 
 ## Usage
 
@@ -16,9 +16,9 @@ You can tell the client to preload files your assets.
 
 	$pusher->preload('/assets/css/style.css');
 
-> Preloading requires a HTTP2 server with push support.
+> Preloading requires a HTTP2 server with push support (e.g. Apache 2.4.24+).
 
-You can prefetch resources that you think the user will need next.
+You can tell the browser to prefetch resources that you think the user will need next.
 
 	$pusher->push('https://example.org/image.jpg', ['prefetch', 'as' => 'image']);
 
@@ -26,7 +26,7 @@ You can prefetch resources that you think the user will need next.
 
 	$pusher->prefetch('https://example.org/image.jpg', ['as' => 'image']);
 
-You can prefetch and render resources that you think the user will visit next.
+You can tell the browser to prefetch and render resources that you think the user will visit next.
 
 	$pusher->push('https://example.org/next', ['prerender']);
 
