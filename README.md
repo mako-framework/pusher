@@ -10,7 +10,7 @@ If you're using the `PusherMiddleware` then you can access the pusher instance u
 
 	$pusher = $this->request->getAttribute('mako.pusher');
 
-You can tell the client to preload files your assets.
+You can tell the client to preload your assets.
 
 	$pusher->push('/assets/css/style.css', ['preload']);
 
