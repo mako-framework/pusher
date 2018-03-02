@@ -78,7 +78,7 @@ class Pusher
 	{
 		if(!empty($this->items))
 		{
-			$this->response->header('Link', $this->buildHeaderValue());
+			$this->response->getHeaders()->add('Link', $this->buildHeaderValue());
 		}
 	}
 

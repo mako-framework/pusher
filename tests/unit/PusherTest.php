@@ -11,6 +11,7 @@ use Mockery;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 
 use mako\http\Response;
+use mako\http\response\Headers;
 use mako\pusher\Pusher;
 
 use PHPUnit\Framework\TestCase;
@@ -33,11 +34,27 @@ class PusherTest extends TestCase
 	/**
 	 *
 	 */
+	protected function getResponseWithHeaders(...$headerAddArgs)
+	{
+		$responseHeaders = Mockery::mock(Headers::class);
+
+		$responseHeaders->shouldReceive('add')->once()->with(...$headerAddArgs);
+
+		$response = Mockery::mock(Response::class);
+
+		$response->shouldReceive('getHeaders')->once()->andReturn($responseHeaders);
+
+		return $response;
+	}
+
+	/**
+	 *
+	 */
 	public function testWithNothing()
 	{
 		$response = Mockery::mock(Response::class);
 
-		$response->shouldReceive('header')->never();
+		$response->shouldReceive('getHeaders')->never();
 
 		$pusher = new Pusher($response);
 
@@ -49,9 +66,7 @@ class PusherTest extends TestCase
 	 */
 	public function testPreload()
 	{
-		$response = Mockery::mock(Response::class);
-
-		$response->shouldReceive('header')->once()->with('Link', '<foo.css>; rel=preload');
+		$response = $this->getResponseWithHeaders('Link', '<foo.css>; rel=preload');
 
 		$pusher = new Pusher($response);
 
@@ -65,9 +80,7 @@ class PusherTest extends TestCase
 	 */
 	public function testPreloadMultiple()
 	{
-		$response = Mockery::mock(Response::class);
-
-		$response->shouldReceive('header')->once()->with('Link', '<foo.css>; rel=preload, <bar.css>; rel=preload');
+		$response = $this->getResponseWithHeaders('Link', '<foo.css>; rel=preload, <bar.css>; rel=preload');
 
 		$pusher = new Pusher($response);
 
@@ -83,9 +96,7 @@ class PusherTest extends TestCase
 	 */
 	public function testPreloadWithNopush()
 	{
-		$response = Mockery::mock(Response::class);
-
-		$response->shouldReceive('header')->once()->with('Link', '<foo.css>; rel=preload; nopush');
+		$response = $this->getResponseWithHeaders('Link', '<foo.css>; rel=preload; nopush');
 
 		$pusher = new Pusher($response);
 
@@ -99,9 +110,7 @@ class PusherTest extends TestCase
 	 */
 	public function testPreloadAsStyle()
 	{
-		$response = Mockery::mock(Response::class);
-
-		$response->shouldReceive('header')->once()->with('Link', '<foo.css>; rel=preload; as=style');
+		$response = $this->getResponseWithHeaders('Link', '<foo.css>; rel=preload; as=style');
 
 		$pusher = new Pusher($response);
 
@@ -112,9 +121,7 @@ class PusherTest extends TestCase
 
 	public function testDnsPrefetchConvenience()
 	{
-		$response = Mockery::mock(Response::class);
-
-		$response->shouldReceive('header')->once()->with('Link', '<https://example.org>; rel=dns-prefetch');
+		$response = $this->getResponseWithHeaders('Link', '<https://example.org>; rel=dns-prefetch');
 
 		$pusher = new Pusher($response);
 
@@ -128,9 +135,7 @@ class PusherTest extends TestCase
 	 */
 	public function testPreconnectConvenience()
 	{
-		$response = Mockery::mock(Response::class);
-
-		$response->shouldReceive('header')->once()->with('Link', '<https://example.org>; rel=preconnect');
+		$response = $this->getResponseWithHeaders('Link', '<https://example.org>; rel=preconnect');
 
 		$pusher = new Pusher($response);
 
@@ -144,9 +149,7 @@ class PusherTest extends TestCase
 	 */
 	public function testPrefetchConvenience()
 	{
-		$response = Mockery::mock(Response::class);
-
-		$response->shouldReceive('header')->once()->with('Link', '<https://example.org>; rel=prefetch');
+		$response = $this->getResponseWithHeaders('Link', '<https://example.org>; rel=prefetch');
 
 		$pusher = new Pusher($response);
 
@@ -160,9 +163,7 @@ class PusherTest extends TestCase
 	 */
 	public function testPreloadConvenience()
 	{
-		$response = Mockery::mock(Response::class);
-
-		$response->shouldReceive('header')->once()->with('Link', '<foo.css>; rel=preload');
+		$response = $this->getResponseWithHeaders('Link', '<foo.css>; rel=preload');
 
 		$pusher = new Pusher($response);
 
@@ -176,9 +177,7 @@ class PusherTest extends TestCase
 	 */
 	public function testPreloadConvenienceWithOptions()
 	{
-		$response = Mockery::mock(Response::class);
-
-		$response->shouldReceive('header')->once()->with('Link', '<foo.css>; rel=preload; as=style');
+		$response = $this->getResponseWithHeaders('Link', '<foo.css>; rel=preload; as=style');
 
 		$pusher = new Pusher($response);
 
@@ -192,9 +191,7 @@ class PusherTest extends TestCase
 	 */
 	public function testPrerenderConvenienceWithOptions()
 	{
-		$response = Mockery::mock(Response::class);
-
-		$response->shouldReceive('header')->once()->with('Link', '<foo.css>; rel=prerender');
+		$response = $this->getResponseWithHeaders('Link', '<foo.css>; rel=prerender');
 
 		$pusher = new Pusher($response);
 
