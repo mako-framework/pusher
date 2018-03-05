@@ -7,13 +7,11 @@
 
 namespace mako\pusher\tests\unit;
 
-use Mockery;
-use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
-
 use mako\http\Response;
 use mako\http\response\Headers;
 use mako\pusher\Pusher;
-
+use Mockery;
+use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use PHPUnit\Framework\TestCase;
 
 /**
