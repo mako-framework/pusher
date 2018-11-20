@@ -9,6 +9,11 @@ namespace mako\pusher;
 
 use mako\http\Response;
 
+use function array_merge;
+use function is_int;
+use function rtrim;
+use function sprintf;
+
 /**
  * Pusher.
  *
