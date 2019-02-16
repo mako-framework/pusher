@@ -10,14 +10,14 @@ namespace mako\pusher;
 use Closure;
 use mako\http\Request;
 use mako\http\Response;
-use mako\http\routing\middleware\Middleware;
+use mako\http\routing\middleware\MiddlewareInterface;
 
 /**
  * Pusher middleware.
  *
  * @author Frederic G. Østby
  */
-class PusherMiddleware extends Middleware
+class PusherMiddleware implements MiddlewareInterface
 {
 	/**
 	 * {@inheritdoc}
