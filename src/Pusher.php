@@ -79,7 +79,7 @@ class Pusher
 	/**
 	 * Adds header to the response.
 	 */
-	public function addHeaderToResponse()
+	public function addHeaderToResponse(): void
 	{
 		if(!empty($this->items))
 		{

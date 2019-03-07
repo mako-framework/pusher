@@ -24,7 +24,7 @@ class PusherTest extends TestCase
 	/**
 	 *
 	 */
-	public function tearDown()
+	public function tearDown(): void
 	{
 		Mockery::close();
 	}
@@ -48,7 +48,7 @@ class PusherTest extends TestCase
 	/**
 	 *
 	 */
-	public function testWithNothing()
+	public function testWithNothing(): void
 	{
 		$response = Mockery::mock(Response::class);
 
@@ -62,7 +62,7 @@ class PusherTest extends TestCase
 	/**
 	 *
 	 */
-	public function testPreload()
+	public function testPreload(): void
 	{
 		$response = $this->getResponseWithHeaders('Link', '<foo.css>; rel=preload');
 
@@ -76,7 +76,7 @@ class PusherTest extends TestCase
 	/**
 	 *
 	 */
-	public function testPreloadMultiple()
+	public function testPreloadMultiple(): void
 	{
 		$response = $this->getResponseWithHeaders('Link', '<foo.css>; rel=preload, <bar.css>; rel=preload');
 
@@ -92,7 +92,7 @@ class PusherTest extends TestCase
 	/**
 	 *
 	 */
-	public function testPreloadWithNopush()
+	public function testPreloadWithNopush(): void
 	{
 		$response = $this->getResponseWithHeaders('Link', '<foo.css>; rel=preload; nopush');
 
@@ -106,7 +106,7 @@ class PusherTest extends TestCase
 	/**
 	 *
 	 */
-	public function testPreloadAsStyle()
+	public function testPreloadAsStyle(): void
 	{
 		$response = $this->getResponseWithHeaders('Link', '<foo.css>; rel=preload; as=style');
 
@@ -117,7 +117,7 @@ class PusherTest extends TestCase
 		$pusher->addHeaderToResponse();
 	}
 
-	public function testDnsPrefetchConvenience()
+	public function testDnsPrefetchConvenience(): void
 	{
 		$response = $this->getResponseWithHeaders('Link', '<https://example.org>; rel=dns-prefetch');
 
@@ -131,7 +131,7 @@ class PusherTest extends TestCase
 	/**
 	 *
 	 */
-	public function testPreconnectConvenience()
+	public function testPreconnectConvenience(): void
 	{
 		$response = $this->getResponseWithHeaders('Link', '<https://example.org>; rel=preconnect');
 
@@ -145,7 +145,7 @@ class PusherTest extends TestCase
 	/**
 	 *
 	 */
-	public function testPrefetchConvenience()
+	public function testPrefetchConvenience(): void
 	{
 		$response = $this->getResponseWithHeaders('Link', '<https://example.org>; rel=prefetch');
 
@@ -159,7 +159,7 @@ class PusherTest extends TestCase
 	/**
 	 *
 	 */
-	public function testPreloadConvenience()
+	public function testPreloadConvenience(): void
 	{
 		$response = $this->getResponseWithHeaders('Link', '<foo.css>; rel=preload');
 
@@ -173,7 +173,7 @@ class PusherTest extends TestCase
 	/**
 	 *
 	 */
-	public function testPreloadConvenienceWithOptions()
+	public function testPreloadConvenienceWithOptions(): void
 	{
 		$response = $this->getResponseWithHeaders('Link', '<foo.css>; rel=preload; as=style');
 
@@ -187,7 +187,7 @@ class PusherTest extends TestCase
 	/**
 	 *
 	 */
-	public function testPrerenderConvenienceWithOptions()
+	public function testPrerenderConvenienceWithOptions(): void
 	{
 		$response = $this->getResponseWithHeaders('Link', '<foo.css>; rel=prerender');
 
