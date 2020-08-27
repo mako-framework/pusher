@@ -4,6 +4,10 @@
 
 Pusher enables you to easily implement `preloading`, `prefetching`, `prerendering`, `dns-prefetching` and `preconnecting` in your applications.
 
+## Requirements
+
+Mako 7.0 or greater.
+
 ## Usage
 
 If you're using the `PusherMiddleware` then you can access the pusher instance using the `Request::getAttribute()` method.
