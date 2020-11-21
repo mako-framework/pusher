@@ -1,6 +1,6 @@
 # Mako Pusher
 
-[![Build Status](https://img.shields.io/travis/mako-framework/pusher/master.svg?style=flat)](https://travis-ci.org/mako-framework/pusher)
+[![Build Status](https://github.com/mako-framework/pusher/workflows/Tests/badge.svg)](https://github.com/mako-framework/pusher/actions?query=workflow%3ATests)
 
 Pusher enables you to easily implement `preloading`, `prefetching`, `prerendering`, `dns-prefetching` and `preconnecting` in your applications.
 
