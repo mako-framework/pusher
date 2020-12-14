@@ -20,7 +20,7 @@ use mako\http\routing\middleware\MiddlewareInterface;
 class PusherMiddleware implements MiddlewareInterface
 {
 	/**
-	 * {@inheritdoc}
+	 * {@inheritDoc}
 	 */
 	public function execute(Request $request, Response $response, Closure $next): Response
 	{
