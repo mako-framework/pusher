@@ -6,7 +6,7 @@ Pusher enables you to easily implement `preloading`, `prefetching`, `prerenderin
 
 ## Requirements
 
-Mako 7.0 or greater.
+Mako 8.0 or greater.
 
 ## Usage
 
